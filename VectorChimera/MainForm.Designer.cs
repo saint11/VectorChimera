@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.imagePreviewArea = new System.Windows.Forms.PictureBox();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.paletteBoxOld = new System.Windows.Forms.ListBox();
             this.fileListBox = new System.Windows.Forms.ListBox();
             this.paletteBoxNew = new System.Windows.Forms.ListBox();
@@ -42,24 +41,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).BeginInit();
+            this.imagePreviewArea = new System.Windows.Forms.PictureBox();
+            this.buttonRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).BeginInit();
             this.SuspendLayout();
-            // 
-            // imagePreviewArea
-            // 
-            this.imagePreviewArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.imagePreviewArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(33)))), ((int)(((byte)(54)))));
-            this.imagePreviewArea.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.imagePreviewArea.InitialImage = null;
-            this.imagePreviewArea.Location = new System.Drawing.Point(12, 12);
-            this.imagePreviewArea.Name = "imagePreviewArea";
-            this.imagePreviewArea.Size = new System.Drawing.Size(568, 544);
-            this.imagePreviewArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.imagePreviewArea.TabIndex = 1;
-            this.imagePreviewArea.TabStop = false;
             // 
             // paletteBoxOld
             // 
@@ -190,9 +176,38 @@
             this.pictureBox1.Image = global::VectorChimera.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(945, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 70);
+            this.pictureBox1.Size = new System.Drawing.Size(128, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // imagePreviewArea
+            // 
+            this.imagePreviewArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imagePreviewArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(33)))), ((int)(((byte)(54)))));
+            this.imagePreviewArea.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.imagePreviewArea.Image = global::VectorChimera.Properties.Resources.dropFiles;
+            this.imagePreviewArea.InitialImage = global::VectorChimera.Properties.Resources.dropFiles;
+            this.imagePreviewArea.Location = new System.Drawing.Point(12, 12);
+            this.imagePreviewArea.Name = "imagePreviewArea";
+            this.imagePreviewArea.Size = new System.Drawing.Size(568, 544);
+            this.imagePreviewArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.imagePreviewArea.TabIndex = 1;
+            this.imagePreviewArea.TabStop = false;
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRemove.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonRemove.Enabled = false;
+            this.buttonRemove.Location = new System.Drawing.Point(586, 561);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(138, 30);
+            this.buttonRemove.TabIndex = 6;
+            this.buttonRemove.Text = "remove selected";
+            this.buttonRemove.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -203,6 +218,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonSaveAll);
             this.Controls.Add(this.zoom4x);
             this.Controls.Add(this.zoom2x);
@@ -211,12 +227,14 @@
             this.Controls.Add(this.paletteBoxNew);
             this.Controls.Add(this.paletteBoxOld);
             this.Controls.Add(this.imagePreviewArea);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ShowIcon = false;
             this.Text = "Vector Chimera";
-            ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,7 +243,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox imagePreviewArea;
-        private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.ListBox paletteBoxOld;
         private System.Windows.Forms.ListBox fileListBox;
         private System.Windows.Forms.ListBox paletteBoxNew;
@@ -237,6 +254,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonRemove;
 
     }
 }

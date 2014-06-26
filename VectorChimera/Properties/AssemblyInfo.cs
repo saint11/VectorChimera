@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PaletteSwapper")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Vector Chimera")]
+[assembly: AssemblyDescription("Palette Swapping Tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PaletteSwapper")]
+[assembly: AssemblyCompany("MiniBoss")]
+[assembly: AssemblyProduct("Vector Chimera")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

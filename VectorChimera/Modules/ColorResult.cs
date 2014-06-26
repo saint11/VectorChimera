@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace VectorChimera
 {
     public class ColorResult
     {
-        public ColorDialog Dialog;
+        public Color Color;
         public DialogResult Result;
 
         public ColorResult()

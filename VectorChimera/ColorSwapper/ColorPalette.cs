@@ -96,5 +96,35 @@ namespace VectorChimera
                 stream.Close();
             }
         }
+
+        public static Color FromHSV(float h, float s, float v)
+        {
+            h = h < 0 ? 0 : (h > 1 ? 1 : h);
+            s = s < 0 ? 0 : (s > 1 ? 1 : s);
+            v = v < 0 ? 0 : (v > 1 ? 1 : v);
+            h *= 360;
+
+            int hi = (int)(h / 60) % 6;
+            float f = (h / 60) - (int)(h / 60);
+            float p = (v * (1 - s));
+            float q = (v * (1 - f * s));
+            float t = (v * (1 - (1 - f) * s));
+            float r, g, b;
+
+            switch (hi)
+            {
+                case 0: r = v; g = t; b = p; break;
+                case 1: r = q; g = v; b = p; break;
+                case 2: r = p; g = v; b = t; break;
+                case 3: r = p; g = q; b = v; break;
+                case 4: r = t; g = p; b = v; break;
+                case 5: r = v; g = p; b = q; break;
+                default: r = g = b = 0; break;
+            }
+
+            return Color.FromArgb((int)(r * 255), (int)(g * 255), (int)(b * 255));
+        }
+
+        
     }
 }

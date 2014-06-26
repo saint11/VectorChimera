@@ -15,7 +15,7 @@ namespace VectorChimera
         private MainForm Main;
 
         public Action RefreshImage;
-        public Func<ColorResult> ShowColorDialog;
+        public Func<Color,ColorResult> ShowColorDialog;
 
         public ColorLists(System.Windows.Forms.ListBox paletteBoxOld, System.Windows.Forms.ListBox paletteBoxNew, MainForm main)
         {
@@ -77,22 +77,22 @@ namespace VectorChimera
 
         void paletteOldBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (paletteBoxOld.Items.Count>0) ChooseColor((int)paletteBoxOld.SelectedItem);
+            if (paletteBoxOld.Items.Count>0) ChooseColor(Color.FromArgb((int)paletteBoxOld.SelectedItem),(int)paletteBoxOld.SelectedItem);
         }
 
         void paletteNewBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (paletteBoxNew.Items.Count > 0) ChooseColor((int)paletteBoxOld.Items[paletteBoxNew.SelectedIndex]);
+            if (paletteBoxNew.Items.Count > 0) ChooseColor(Color.FromArgb((int)paletteBoxNew.SelectedItem), (int)paletteBoxOld.Items[paletteBoxNew.SelectedIndex]);
         }
 
-        private void ChooseColor(int index)
+        private void ChooseColor(Color from, int index)
         {
             if (ShowColorDialog == null) return;
-            ColorResult colorResult = ShowColorDialog();
+            ColorResult colorResult = ShowColorDialog(from);
 
             if (colorResult.Result == DialogResult.OK)
             {
-                Main.Palette[index] = colorResult.Dialog.Color.ToArgb();
+                Main.Palette[index] = colorResult.Color.ToArgb();
                 RefreshImage();
                 RefreshPalette();
             }

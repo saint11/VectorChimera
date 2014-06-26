@@ -44,9 +44,31 @@ namespace VectorChimera
             };
 
             imagePreviewArea.MouseClick += imagePreviewArea_MouseClick;
-            Bitmap dropImage = new Bitmap(ImageHandler.LoadImageNoLock(AppDomain.CurrentDomain.BaseDirectory + "dropFiles.png"));
-            imagePreviewArea.Image = ImageHandler.ResizeBitmap(dropImage, dropImage.Width * 4, dropImage.Height * 4);
+            InitImagePreview();
 
+            buttonRemove.Click += buttonRemove_Click;
+        }
+
+        private void InitImagePreview()
+        {
+            imagePreviewArea.Image = imagePreviewArea.InitialImage;
+            imagePreviewArea.Image = ImageHandler.ResizeBitmap(new Bitmap(imagePreviewArea.Image),
+                imagePreviewArea.Image.Width * 4,
+                imagePreviewArea.Image.Height * 4);
+        }
+
+        void buttonRemove_Click(object sender, EventArgs e)
+        {
+            FileList.RemoveAt(fileListBox.SelectedIndex);
+            RefreshImage();
+
+            if (FileList.Count == 0)
+            {
+                buttonRemove.Enabled = false;
+                buttonSaveAll.Enabled = false;
+            }
+
+            RefreshFileList();
         }
 
         void imagePreviewArea_MouseClick(object sender, MouseEventArgs e)
@@ -145,15 +167,21 @@ namespace VectorChimera
             }
 
 
-            fileListBox.Items.Clear();
-            foreach (var f in FileList) fileListBox.Items.Add(f);
-            fileListBox.Refresh();
+            RefreshFileList();
 
             fileListBox.SelectedIndex = fileListBox.Items.Count-1;
 
             RefreshImage();
             ColorLists.RefreshPalette();
             buttonSaveAll.Enabled = true;
+            buttonRemove.Enabled = true;
+        }
+
+        private void RefreshFileList()
+        {
+            fileListBox.Items.Clear();
+            foreach (var f in FileList) fileListBox.Items.Add(f);
+            fileListBox.Refresh();
         }
 
     #endregion
@@ -161,8 +189,15 @@ namespace VectorChimera
     #region Refreshes
         private void RefreshImage()
         {
-            Image temp = ImageHandler.LoadImageNoLock(FileList[fileListBox.SelectedIndex]);
-            imagePreviewArea.Image = ImageHandler.ResizeBitmap(ColorPalette.SwapColors(Palette, new Bitmap(temp)), Zoom * temp.Width, Zoom * temp.Height);
+            if (FileList != null && FileList.Count > 0)
+            {
+                Image temp = ImageHandler.LoadImageNoLock(FileList[fileListBox.SelectedIndex]);
+                imagePreviewArea.Image = ImageHandler.ResizeBitmap(ColorPalette.SwapColors(Palette, new Bitmap(temp)), Zoom * temp.Width, Zoom * temp.Height);
+            }
+            else
+            {
+                InitImagePreview();
+            }
         }
 
         
@@ -173,11 +208,13 @@ namespace VectorChimera
             RefreshImage();
         }
 
-        ColorResult showColorDialog()
+        ColorResult showColorDialog(Color color)
         {
-            DialogResult colorResult = colorDialog.ShowDialog();
-
-            return new ColorResult() { Dialog = colorDialog, Result= colorResult };
+            ColorPicker dialog = new ColorPicker();
+            dialog.SetColor(color);
+            DialogResult colorResult = dialog.ShowDialog();
+            
+            return new ColorResult() { Color = dialog.SelectedColor, Result = colorResult };
         }
 
     }
