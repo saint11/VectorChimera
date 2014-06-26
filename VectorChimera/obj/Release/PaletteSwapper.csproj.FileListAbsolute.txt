@@ -1,0 +1,11 @@
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Release\PaletteSwapper.exe.config
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Release\dropFiles.png
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Release\PaletteSwapper.exe
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Release\PaletteSwapper.pdb
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Release\PaletteSwapper.MainForm.resources
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Release\PaletteSwapper.Properties.Resources.resources
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Release\PaletteSwapper.csproj.GenerateResource.Cache
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Release\PaletteSwapper.exe
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Release\PaletteSwapper.pdb
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Release\PaletteSwapper.csprojResolveAssemblyReference.cache
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Release\logo.png

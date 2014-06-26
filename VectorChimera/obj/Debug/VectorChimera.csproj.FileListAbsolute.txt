@@ -1,0 +1,13 @@
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Debug\VectorChimera.exe.config
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Debug\dropFiles.png
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Debug\logo.png
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Debug\VectorChimera.exe
+C:\Repository\PaletteSwapper\PaletteSwapper\bin\Debug\VectorChimera.pdb
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Debug\VectorChimera.MainForm.resources
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Debug\VectorChimera.Properties.Resources.resources
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Debug\VectorChimera.csproj.GenerateResource.Cache
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Debug\VectorChimera.exe
+C:\Repository\PaletteSwapper\PaletteSwapper\obj\Debug\VectorChimera.pdb
+C:\Repository\PaletteSwapper\VectorChimera\bin\Debug\VectorChimera.exe.config
+C:\Repository\PaletteSwapper\VectorChimera\obj\Debug\VectorChimera.exe
+C:\Repository\PaletteSwapper\VectorChimera\obj\Debug\VectorChimera.pdb
