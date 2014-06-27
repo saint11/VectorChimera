@@ -44,6 +44,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imagePreviewArea = new System.Windows.Forms.PictureBox();
             this.checkIgnore = new System.Windows.Forms.CheckBox();
+            this.zoom6x = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).BeginInit();
             this.SuspendLayout();
@@ -223,6 +224,18 @@
             this.checkIgnore.Text = "ignore non-image files";
             this.checkIgnore.UseVisualStyleBackColor = true;
             // 
+            // zoom6x
+            // 
+            this.zoom6x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.zoom6x.AutoSize = true;
+            this.zoom6x.ForeColor = System.Drawing.SystemColors.Menu;
+            this.zoom6x.Location = new System.Drawing.Point(262, 560);
+            this.zoom6x.Name = "zoom6x";
+            this.zoom6x.Size = new System.Drawing.Size(77, 21);
+            this.zoom6x.TabIndex = 5;
+            this.zoom6x.Text = "zoom6x";
+            this.zoom6x.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,6 +248,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonSaveAll);
+            this.Controls.Add(this.zoom6x);
             this.Controls.Add(this.zoom4x);
             this.Controls.Add(this.zoom2x);
             this.Controls.Add(this.zoom1x);
@@ -271,6 +285,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.CheckBox checkIgnore;
+        private System.Windows.Forms.RadioButton zoom6x;
 
     }
 }

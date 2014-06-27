@@ -33,7 +33,8 @@ namespace VectorChimera
 
             zoom1x.CheckedChanged += zoom1x_CheckedChanged;
             zoom2x.CheckedChanged += zoom2x_CheckedChanged;
-            zoom4x.CheckedChanged += zoom3x_CheckedChanged;
+            zoom4x.CheckedChanged += zoom4x_CheckedChanged;
+            zoom6x.CheckedChanged += zoom6x_CheckedChanged;
 
             buttonSaveAll.Click += buttonSaveAll_Click;
 
@@ -117,11 +118,18 @@ namespace VectorChimera
             Zoom = 2;
             RefreshImage();
         }
-        private void zoom3x_CheckedChanged(object sender, EventArgs e)
+        private void zoom4x_CheckedChanged(object sender, EventArgs e)
         {
             Zoom = 4;
             RefreshImage();
         }
+        private void zoom6x_CheckedChanged(object sender, EventArgs e)
+        {
+            Zoom = 6;
+            RefreshImage();
+        }
+
+
 #endregion
 
     #region DragFiles
