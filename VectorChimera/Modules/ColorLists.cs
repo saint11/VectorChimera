@@ -31,7 +31,6 @@ namespace VectorChimera
 
             paletteBoxNew.SelectedIndexChanged += paletteBoxNew_SelectedIndexChanged;
             paletteBoxOld.SelectedIndexChanged += paletteBoxOld_SelectedIndexChanged;
-
         }
 
         private void paletteBoxNew_DrawItem(object sender, DrawItemEventArgs e)
@@ -68,11 +67,13 @@ namespace VectorChimera
         void paletteBoxOld_SelectedIndexChanged(object sender, EventArgs e)
         {
             paletteBoxNew.SelectedIndex = paletteBoxOld.SelectedIndex;
+            paletteBoxNew.TopIndex = paletteBoxOld.TopIndex;
         }
 
         void paletteBoxNew_SelectedIndexChanged(object sender, EventArgs e)
         {
             paletteBoxOld.SelectedIndex = paletteBoxNew.SelectedIndex;
+            paletteBoxOld.TopIndex = paletteBoxNew.TopIndex;
         }
 
         void paletteOldBox_MouseDoubleClick(object sender, MouseEventArgs e)

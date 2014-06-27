@@ -30,7 +30,56 @@ namespace VectorChimera
             trackBarHue.ValueChanged += trackBarHSV_ValueChanged;
             trackBarSaturation.ValueChanged += trackBarHSV_ValueChanged;
             trackBarValue.ValueChanged += trackBarHSV_ValueChanged;
+
+            textBoxR.TextChanged += textBox_TextChanged;
+            textBoxG.TextChanged += textBox_TextChanged;
+            textBoxB.TextChanged += textBox_TextChanged;
+            textBoxH.TextChanged += textBox_TextChanged;
+            textBoxS.TextChanged += textBox_TextChanged;
+            textBoxV.TextChanged += textBox_TextChanged;
         }
+
+        void textBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSlidersFromText();
+        }
+
+        private void UpdateSlidersFromText()
+        {
+            trackBarRed.Value = ParseClamp(textBoxR.Text, trackBarRed.Minimum,trackBarRed.Maximum);
+            textBoxR.Text = trackBarRed.Value.ToString();
+
+            trackBarGreen.Value = ParseClamp(textBoxG.Text, trackBarGreen.Minimum, trackBarGreen.Maximum);
+            textBoxG.Text = trackBarGreen.Value.ToString();
+
+            trackBarBlue.Value = ParseClamp(textBoxB.Text, trackBarBlue.Minimum, trackBarBlue.Maximum);
+            textBoxB.Text = trackBarBlue.Value.ToString();
+
+            trackBarHue.Value = ParseClamp(textBoxH.Text, trackBarHue.Minimum, trackBarHue.Maximum);
+            textBoxH.Text = trackBarHue.Value.ToString();
+
+            trackBarSaturation.Value = ParseClamp(textBoxS.Text, trackBarSaturation.Minimum, trackBarSaturation.Maximum);
+            textBoxS.Text = trackBarSaturation.Value.ToString();
+
+            trackBarValue.Value = ParseClamp(textBoxV.Text, trackBarValue.Minimum, trackBarValue.Maximum);
+            textBoxV.Text = trackBarValue.Value.ToString();
+        }
+
+        private int ParseClamp(string text,int min, int max)
+        {
+            int ret;
+            try
+            {
+                ret = int.Parse(text);
+            }
+            catch
+            {
+                ret = min;
+            }
+            
+            return Util.Clamp(ret,min,max);
+        }
+
 
         void buttonWinColor_Click(object sender, EventArgs e)
         {
@@ -69,6 +118,9 @@ namespace VectorChimera
         {
             newColorBox.BackColor = SelectedColor = 
                 ColorPalette.FromHSV(trackBarHue.Value/3600f, trackBarSaturation.Value/1000f, trackBarValue.Value/255f);
+            textBoxH.Text = trackBarHue.Value.ToString();
+            textBoxS.Text = trackBarSaturation.Value.ToString();
+            textBoxV.Text = trackBarValue.Value.ToString();
         }
 
         void buttonOk_Click(object sender, EventArgs e)
@@ -86,10 +138,13 @@ namespace VectorChimera
             trackBarGreen.Value = color.G;
             trackBarBlue.Value = color.B;
 
+            float cMax = Math.Max(Math.Max(color.R,color.G),color.B);
+            float cMin = Math.Min(Math.Min(color.R, color.G), color.B);
 
             trackBarHue.Value = (int)(color.GetHue()*10);
-            trackBarSaturation.Value = (int)(color.GetSaturation()*1000);
-            trackBarValue.Value = (int)(Math.Max(Math.Max(color.R,color.G),color.B));
+            if (cMax - cMin == 0) trackBarSaturation.Value = 0;
+            else trackBarSaturation.Value = (int)(((cMax-cMin)/cMax )* 1000);
+            trackBarValue.Value = (int)(cMax);
 
             UpdateRGBNewColor();
         }

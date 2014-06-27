@@ -40,9 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.imagePreviewArea = new System.Windows.Forms.PictureBox();
-            this.buttonRemove = new System.Windows.Forms.Button();
+            this.checkIgnore = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +76,7 @@
             this.fileListBox.Location = new System.Drawing.Point(586, 14);
             this.fileListBox.Name = "fileListBox";
             this.fileListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.fileListBox.Size = new System.Drawing.Size(307, 541);
+            this.fileListBox.Size = new System.Drawing.Size(307, 514);
             this.fileListBox.TabIndex = 2;
             // 
             // paletteBoxNew
@@ -170,6 +171,18 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRemove.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonRemove.Enabled = false;
+            this.buttonRemove.Location = new System.Drawing.Point(586, 561);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(138, 30);
+            this.buttonRemove.TabIndex = 6;
+            this.buttonRemove.Text = "remove selected";
+            this.buttonRemove.UseVisualStyleBackColor = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -197,17 +210,18 @@
             this.imagePreviewArea.TabIndex = 1;
             this.imagePreviewArea.TabStop = false;
             // 
-            // buttonRemove
+            // checkIgnore
             // 
-            this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRemove.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonRemove.Enabled = false;
-            this.buttonRemove.Location = new System.Drawing.Point(586, 561);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(138, 30);
-            this.buttonRemove.TabIndex = 6;
-            this.buttonRemove.Text = "remove selected";
-            this.buttonRemove.UseVisualStyleBackColor = false;
+            this.checkIgnore.AutoSize = true;
+            this.checkIgnore.Checked = true;
+            this.checkIgnore.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkIgnore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(76)))), ((int)(((byte)(123)))));
+            this.checkIgnore.Location = new System.Drawing.Point(586, 534);
+            this.checkIgnore.Name = "checkIgnore";
+            this.checkIgnore.Size = new System.Drawing.Size(170, 21);
+            this.checkIgnore.TabIndex = 9;
+            this.checkIgnore.Text = "ignore non-image files";
+            this.checkIgnore.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -215,6 +229,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(33)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(1125, 603);
+            this.Controls.Add(this.checkIgnore);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -255,6 +270,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.CheckBox checkIgnore;
 
     }
 }

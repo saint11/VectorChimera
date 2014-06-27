@@ -60,6 +60,8 @@ namespace VectorChimera
         void buttonRemove_Click(object sender, EventArgs e)
         {
             FileList.RemoveAt(fileListBox.SelectedIndex);
+            if (fileListBox.SelectedIndex > 0) fileListBox.SelectedIndex--;
+
             RefreshImage();
 
             if (FileList.Count == 0)
@@ -144,26 +146,7 @@ namespace VectorChimera
 
             foreach (string file in files)
             {
-                if (File.Exists(file))
-                {
-                    Bitmap mainImage = null;
-
-                    if (!FileList.Contains(file)) FileList.Add(file);
-                    try
-                    {
-                        mainImage = new Bitmap(ImageHandler.LoadImageNoLock(file));
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Not an image!");
-                    }
-
-                    if (mainImage != null)
-                    {
-                        if (Palette == null) Palette = new Dictionary<int, int>();
-                        foreach (var c in ColorPalette.ExtractPalette(mainImage)) if (!Palette.ContainsKey(c)) Palette[c] = c;
-                    }
-                }
+                LoadFile(file);
             }
 
 
@@ -175,6 +158,51 @@ namespace VectorChimera
             ColorLists.RefreshPalette();
             buttonSaveAll.Enabled = true;
             buttonRemove.Enabled = true;
+        }
+
+        private void LoadFile(string file)
+        {
+            if (Directory.Exists(file))
+            {
+                DirectoryInfo dir = new DirectoryInfo(file);
+                foreach (var f in dir.GetFiles())
+                {
+                    LoadFile(f.FullName);
+                }
+                foreach (var f in dir.GetDirectories())
+                {
+                    LoadFile(f.FullName);
+                }
+            }
+            if (File.Exists(file))
+            {
+                string extention = file.Substring(file.Length - 3, 3);
+
+                if (extention != "png")
+                {
+                    if (!checkIgnore.Checked) MessageBox.Show("Only .png is supported for now!", "Sorray...", MessageBoxButtons.OK);
+                    return;
+                }
+
+
+                Bitmap mainImage = null;
+
+                if (!FileList.Contains(file)) FileList.Add(file);
+                try
+                {
+                    mainImage = new Bitmap(ImageHandler.LoadImageNoLock(file));
+                }
+                catch
+                {
+                    Console.WriteLine("Not an image!");
+                }
+
+                if (mainImage != null)
+                {
+                    if (Palette == null) Palette = new Dictionary<int, int>();
+                    foreach (var c in ColorPalette.ExtractPalette(mainImage)) if (!Palette.ContainsKey(c)) Palette[c] = c;
+                }
+            }
         }
 
         private void RefreshFileList()

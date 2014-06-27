@@ -76,6 +76,7 @@
     <Compile Include="ColorPicker.Designer.cs">
       <DependentUpon>ColorPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="ColorSwapper\Util.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
