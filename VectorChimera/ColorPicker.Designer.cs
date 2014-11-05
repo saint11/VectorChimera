@@ -33,10 +33,16 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBoxB = new System.Windows.Forms.TextBox();
+            this.textBoxG = new System.Windows.Forms.TextBox();
+            this.textBoxR = new System.Windows.Forms.TextBox();
             this.trackBarBlue = new System.Windows.Forms.TrackBar();
             this.trackBarGreen = new System.Windows.Forms.TrackBar();
             this.trackBarRed = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBoxV = new System.Windows.Forms.TextBox();
+            this.textBoxS = new System.Windows.Forms.TextBox();
+            this.textBoxH = new System.Windows.Forms.TextBox();
             this.trackBarValue = new System.Windows.Forms.TrackBar();
             this.trackBarSaturation = new System.Windows.Forms.TrackBar();
             this.trackBarHue = new System.Windows.Forms.TrackBar();
@@ -44,12 +50,9 @@
             this.newColorBox = new System.Windows.Forms.PictureBox();
             this.buttonWinColor = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.textBoxR = new System.Windows.Forms.TextBox();
-            this.textBoxG = new System.Windows.Forms.TextBox();
-            this.textBoxB = new System.Windows.Forms.TextBox();
-            this.textBoxH = new System.Windows.Forms.TextBox();
-            this.textBoxS = new System.Windows.Forms.TextBox();
-            this.textBoxV = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.labelOldValue = new System.Windows.Forms.Label();
+            this.textBoxHexa = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarBlue)).BeginInit();
@@ -61,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oldColorBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newColorBox)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonOk
@@ -95,6 +99,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -116,6 +121,27 @@
             this.tabPage1.Size = new System.Drawing.Size(450, 170);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "RGB";
+            // 
+            // textBoxB
+            // 
+            this.textBoxB.Location = new System.Drawing.Point(393, 125);
+            this.textBoxB.Name = "textBoxB";
+            this.textBoxB.Size = new System.Drawing.Size(51, 22);
+            this.textBoxB.TabIndex = 4;
+            // 
+            // textBoxG
+            // 
+            this.textBoxG.Location = new System.Drawing.Point(393, 69);
+            this.textBoxG.Name = "textBoxG";
+            this.textBoxG.Size = new System.Drawing.Size(51, 22);
+            this.textBoxG.TabIndex = 4;
+            // 
+            // textBoxR
+            // 
+            this.textBoxR.Location = new System.Drawing.Point(393, 13);
+            this.textBoxR.Name = "textBoxR";
+            this.textBoxR.Size = new System.Drawing.Size(51, 22);
+            this.textBoxR.TabIndex = 4;
             // 
             // trackBarBlue
             // 
@@ -171,6 +197,27 @@
             this.tabPage2.Size = new System.Drawing.Size(450, 170);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "HSV";
+            // 
+            // textBoxV
+            // 
+            this.textBoxV.Location = new System.Drawing.Point(393, 125);
+            this.textBoxV.Name = "textBoxV";
+            this.textBoxV.Size = new System.Drawing.Size(51, 22);
+            this.textBoxV.TabIndex = 7;
+            // 
+            // textBoxS
+            // 
+            this.textBoxS.Location = new System.Drawing.Point(393, 69);
+            this.textBoxS.Name = "textBoxS";
+            this.textBoxS.Size = new System.Drawing.Size(51, 22);
+            this.textBoxS.TabIndex = 7;
+            // 
+            // textBoxH
+            // 
+            this.textBoxH.Location = new System.Drawing.Point(393, 13);
+            this.textBoxH.Name = "textBoxH";
+            this.textBoxH.Size = new System.Drawing.Size(51, 22);
+            this.textBoxH.TabIndex = 7;
             // 
             // trackBarValue
             // 
@@ -238,47 +285,35 @@
             this.buttonWinColor.Text = "windows picker";
             this.buttonWinColor.UseVisualStyleBackColor = true;
             // 
-            // textBoxR
+            // tabPage3
             // 
-            this.textBoxR.Location = new System.Drawing.Point(393, 13);
-            this.textBoxR.Name = "textBoxR";
-            this.textBoxR.Size = new System.Drawing.Size(51, 22);
-            this.textBoxR.TabIndex = 4;
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(33)))), ((int)(((byte)(54)))));
+            this.tabPage3.Controls.Add(this.textBoxHexa);
+            this.tabPage3.Controls.Add(this.labelOldValue);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(450, 170);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "HEX";
             // 
-            // textBoxG
+            // labelOldValue
             // 
-            this.textBoxG.Location = new System.Drawing.Point(393, 69);
-            this.textBoxG.Name = "textBoxG";
-            this.textBoxG.Size = new System.Drawing.Size(51, 22);
-            this.textBoxG.TabIndex = 4;
+            this.labelOldValue.AutoSize = true;
+            this.labelOldValue.ForeColor = System.Drawing.Color.White;
+            this.labelOldValue.Location = new System.Drawing.Point(211, 41);
+            this.labelOldValue.Name = "labelOldValue";
+            this.labelOldValue.Size = new System.Drawing.Size(46, 17);
+            this.labelOldValue.TabIndex = 0;
+            this.labelOldValue.Text = "label1";
+            this.labelOldValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBoxB
+            // textBoxHexa
             // 
-            this.textBoxB.Location = new System.Drawing.Point(393, 125);
-            this.textBoxB.Name = "textBoxB";
-            this.textBoxB.Size = new System.Drawing.Size(51, 22);
-            this.textBoxB.TabIndex = 4;
-            // 
-            // textBoxH
-            // 
-            this.textBoxH.Location = new System.Drawing.Point(393, 13);
-            this.textBoxH.Name = "textBoxH";
-            this.textBoxH.Size = new System.Drawing.Size(51, 22);
-            this.textBoxH.TabIndex = 7;
-            // 
-            // textBoxS
-            // 
-            this.textBoxS.Location = new System.Drawing.Point(393, 69);
-            this.textBoxS.Name = "textBoxS";
-            this.textBoxS.Size = new System.Drawing.Size(51, 22);
-            this.textBoxS.TabIndex = 7;
-            // 
-            // textBoxV
-            // 
-            this.textBoxV.Location = new System.Drawing.Point(393, 125);
-            this.textBoxV.Name = "textBoxV";
-            this.textBoxV.Size = new System.Drawing.Size(51, 22);
-            this.textBoxV.TabIndex = 7;
+            this.textBoxHexa.Location = new System.Drawing.Point(154, 73);
+            this.textBoxHexa.Name = "textBoxHexa";
+            this.textBoxHexa.Size = new System.Drawing.Size(172, 22);
+            this.textBoxHexa.TabIndex = 1;
+            this.textBoxHexa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ColorPicker
             // 
@@ -313,6 +348,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarHue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.oldColorBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newColorBox)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -341,5 +378,8 @@
         private System.Windows.Forms.TextBox textBoxV;
         private System.Windows.Forms.TextBox textBoxS;
         private System.Windows.Forms.TextBox textBoxH;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox textBoxHexa;
+        private System.Windows.Forms.Label labelOldValue;
     }
 }

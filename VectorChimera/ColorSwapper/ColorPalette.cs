@@ -85,18 +85,6 @@ namespace VectorChimera
             return final;
         }
 
-        public static void SaveFiles(Dictionary<int, int> changelog, List<string> files)
-        {
-            foreach (string file in files)
-            {
-                Bitmap bit = SwapColors(changelog, new Bitmap(ImageHandler.LoadImageNoLock(file)));
-
-                Stream stream = new FileStream(file,FileMode.Create);
-                bit.Save(stream,ImageFormat.Png);
-                stream.Close();
-            }
-        }
-
         public static Color FromHSV(float h, float s, float v)
         {
             h = h < 0 ? 0 : (h > 1 ? 1 : h);
@@ -125,6 +113,20 @@ namespace VectorChimera
             return Color.FromArgb((int)(r * 255), (int)(g * 255), (int)(b * 255));
         }
 
-        
+
+
+        internal static void SaveFiles(Dictionary<int, int> changelog, List<string> files,
+            float resize)
+        {
+            foreach (string file in files)
+            {
+                Bitmap bit = SwapColors(changelog, new Bitmap(ImageHandler.LoadImageNoLock(file)));
+
+                Stream stream = new FileStream(file, FileMode.Create);
+                bit = ImageHandler.ScaleBitmap(bit,resize,resize);
+                bit.Save(stream, ImageFormat.Png);
+                stream.Close();
+            }
+        }
     }
 }

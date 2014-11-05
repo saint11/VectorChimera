@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.paletteBoxOld = new System.Windows.Forms.ListBox();
-            this.fileListBox = new System.Windows.Forms.ListBox();
             this.paletteBoxNew = new System.Windows.Forms.ListBox();
             this.zoom1x = new System.Windows.Forms.RadioButton();
             this.zoom2x = new System.Windows.Forms.RadioButton();
@@ -45,8 +44,19 @@
             this.imagePreviewArea = new System.Windows.Forms.PictureBox();
             this.checkIgnore = new System.Windows.Forms.CheckBox();
             this.zoom6x = new System.Windows.Forms.RadioButton();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabFiles = new System.Windows.Forms.TabPage();
+            this.fileListBox = new System.Windows.Forms.ListBox();
+            this.tabActions = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxResizeAll = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabFiles.SuspendLayout();
+            this.tabActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxResizeAll)).BeginInit();
             this.SuspendLayout();
             // 
             // paletteBoxOld
@@ -61,24 +71,8 @@
             this.paletteBoxOld.ItemHeight = 25;
             this.paletteBoxOld.Location = new System.Drawing.Point(911, 95);
             this.paletteBoxOld.Name = "paletteBoxOld";
-            this.paletteBoxOld.Size = new System.Drawing.Size(98, 460);
+            this.paletteBoxOld.Size = new System.Drawing.Size(98, 485);
             this.paletteBoxOld.TabIndex = 3;
-            // 
-            // fileListBox
-            // 
-            this.fileListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(76)))), ((int)(((byte)(123)))));
-            this.fileListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fileListBox.ForeColor = System.Drawing.SystemColors.Menu;
-            this.fileListBox.FormattingEnabled = true;
-            this.fileListBox.IntegralHeight = false;
-            this.fileListBox.ItemHeight = 16;
-            this.fileListBox.Location = new System.Drawing.Point(586, 14);
-            this.fileListBox.Name = "fileListBox";
-            this.fileListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.fileListBox.Size = new System.Drawing.Size(307, 514);
-            this.fileListBox.TabIndex = 2;
             // 
             // paletteBoxNew
             // 
@@ -91,7 +85,7 @@
             this.paletteBoxNew.ItemHeight = 25;
             this.paletteBoxNew.Location = new System.Drawing.Point(1015, 95);
             this.paletteBoxNew.Name = "paletteBoxNew";
-            this.paletteBoxNew.Size = new System.Drawing.Size(98, 460);
+            this.paletteBoxNew.Size = new System.Drawing.Size(98, 485);
             this.paletteBoxNew.TabIndex = 4;
             // 
             // zoom1x
@@ -100,7 +94,7 @@
             this.zoom1x.AutoSize = true;
             this.zoom1x.Checked = true;
             this.zoom1x.ForeColor = System.Drawing.SystemColors.Menu;
-            this.zoom1x.Location = new System.Drawing.Point(13, 561);
+            this.zoom1x.Location = new System.Drawing.Point(13, 586);
             this.zoom1x.Name = "zoom1x";
             this.zoom1x.Size = new System.Drawing.Size(77, 21);
             this.zoom1x.TabIndex = 5;
@@ -113,7 +107,7 @@
             this.zoom2x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.zoom2x.AutoSize = true;
             this.zoom2x.ForeColor = System.Drawing.SystemColors.Menu;
-            this.zoom2x.Location = new System.Drawing.Point(96, 560);
+            this.zoom2x.Location = new System.Drawing.Point(96, 585);
             this.zoom2x.Name = "zoom2x";
             this.zoom2x.Size = new System.Drawing.Size(77, 21);
             this.zoom2x.TabIndex = 5;
@@ -125,7 +119,7 @@
             this.zoom4x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.zoom4x.AutoSize = true;
             this.zoom4x.ForeColor = System.Drawing.SystemColors.Menu;
-            this.zoom4x.Location = new System.Drawing.Point(179, 560);
+            this.zoom4x.Location = new System.Drawing.Point(179, 585);
             this.zoom4x.Name = "zoom4x";
             this.zoom4x.Size = new System.Drawing.Size(77, 21);
             this.zoom4x.TabIndex = 5;
@@ -137,9 +131,9 @@
             this.buttonSaveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSaveAll.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSaveAll.Enabled = false;
-            this.buttonSaveAll.Location = new System.Drawing.Point(786, 561);
+            this.buttonSaveAll.Location = new System.Drawing.Point(730, 586);
             this.buttonSaveAll.Name = "buttonSaveAll";
-            this.buttonSaveAll.Size = new System.Drawing.Size(107, 30);
+            this.buttonSaveAll.Size = new System.Drawing.Size(163, 30);
             this.buttonSaveAll.TabIndex = 6;
             this.buttonSaveAll.Text = "ovewride all";
             this.buttonSaveAll.UseVisualStyleBackColor = false;
@@ -177,7 +171,7 @@
             this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRemove.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonRemove.Enabled = false;
-            this.buttonRemove.Location = new System.Drawing.Point(586, 561);
+            this.buttonRemove.Location = new System.Drawing.Point(586, 586);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(138, 30);
             this.buttonRemove.TabIndex = 6;
@@ -206,18 +200,19 @@
             this.imagePreviewArea.InitialImage = global::VectorChimera.Properties.Resources.dropFiles;
             this.imagePreviewArea.Location = new System.Drawing.Point(12, 12);
             this.imagePreviewArea.Name = "imagePreviewArea";
-            this.imagePreviewArea.Size = new System.Drawing.Size(568, 544);
+            this.imagePreviewArea.Size = new System.Drawing.Size(568, 569);
             this.imagePreviewArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.imagePreviewArea.TabIndex = 1;
             this.imagePreviewArea.TabStop = false;
             // 
             // checkIgnore
             // 
+            this.checkIgnore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkIgnore.AutoSize = true;
             this.checkIgnore.Checked = true;
             this.checkIgnore.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkIgnore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(76)))), ((int)(((byte)(123)))));
-            this.checkIgnore.Location = new System.Drawing.Point(586, 534);
+            this.checkIgnore.Location = new System.Drawing.Point(586, 559);
             this.checkIgnore.Name = "checkIgnore";
             this.checkIgnore.Size = new System.Drawing.Size(170, 21);
             this.checkIgnore.TabIndex = 9;
@@ -229,19 +224,112 @@
             this.zoom6x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.zoom6x.AutoSize = true;
             this.zoom6x.ForeColor = System.Drawing.SystemColors.Menu;
-            this.zoom6x.Location = new System.Drawing.Point(262, 560);
+            this.zoom6x.Location = new System.Drawing.Point(262, 585);
             this.zoom6x.Name = "zoom6x";
             this.zoom6x.Size = new System.Drawing.Size(77, 21);
             this.zoom6x.TabIndex = 5;
             this.zoom6x.Text = "zoom6x";
             this.zoom6x.UseVisualStyleBackColor = true;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabFiles);
+            this.tabControl1.Controls.Add(this.tabActions);
+            this.tabControl1.Location = new System.Drawing.Point(586, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(6, 6);
+            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(307, 541);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // tabFiles
+            // 
+            this.tabFiles.BackColor = System.Drawing.SystemColors.Control;
+            this.tabFiles.Controls.Add(this.fileListBox);
+            this.tabFiles.Location = new System.Drawing.Point(4, 31);
+            this.tabFiles.Name = "tabFiles";
+            this.tabFiles.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFiles.Size = new System.Drawing.Size(299, 506);
+            this.tabFiles.TabIndex = 0;
+            this.tabFiles.Text = "Files";
+            // 
+            // fileListBox
+            // 
+            this.fileListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fileListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(76)))), ((int)(((byte)(123)))));
+            this.fileListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fileListBox.ForeColor = System.Drawing.SystemColors.Menu;
+            this.fileListBox.FormattingEnabled = true;
+            this.fileListBox.IntegralHeight = false;
+            this.fileListBox.ItemHeight = 16;
+            this.fileListBox.Location = new System.Drawing.Point(3, 3);
+            this.fileListBox.Name = "fileListBox";
+            this.fileListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.fileListBox.Size = new System.Drawing.Size(294, 502);
+            this.fileListBox.TabIndex = 3;
+            // 
+            // tabActions
+            // 
+            this.tabActions.Controls.Add(this.label4);
+            this.tabActions.Controls.Add(this.textBoxResizeAll);
+            this.tabActions.Controls.Add(this.label3);
+            this.tabActions.Location = new System.Drawing.Point(4, 31);
+            this.tabActions.Name = "tabActions";
+            this.tabActions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabActions.Size = new System.Drawing.Size(299, 506);
+            this.tabActions.TabIndex = 1;
+            this.tabActions.Text = "Actions";
+            this.tabActions.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(186, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 17);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "%";
+            // 
+            // textBoxResizeAll
+            // 
+            this.textBoxResizeAll.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.textBoxResizeAll.Location = new System.Drawing.Point(60, 9);
+            this.textBoxResizeAll.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.textBoxResizeAll.Name = "textBoxResizeAll";
+            this.textBoxResizeAll.Size = new System.Drawing.Size(120, 22);
+            this.textBoxResizeAll.TabIndex = 2;
+            this.textBoxResizeAll.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Resize";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(33)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(1125, 603);
+            this.ClientSize = new System.Drawing.Size(1125, 628);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.checkIgnore);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -252,7 +340,6 @@
             this.Controls.Add(this.zoom4x);
             this.Controls.Add(this.zoom2x);
             this.Controls.Add(this.zoom1x);
-            this.Controls.Add(this.fileListBox);
             this.Controls.Add(this.paletteBoxNew);
             this.Controls.Add(this.paletteBoxOld);
             this.Controls.Add(this.imagePreviewArea);
@@ -264,6 +351,11 @@
             this.Text = "Vector Chimera";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagePreviewArea)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabFiles.ResumeLayout(false);
+            this.tabActions.ResumeLayout(false);
+            this.tabActions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxResizeAll)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,7 +365,6 @@
 
         private System.Windows.Forms.PictureBox imagePreviewArea;
         private System.Windows.Forms.ListBox paletteBoxOld;
-        private System.Windows.Forms.ListBox fileListBox;
         private System.Windows.Forms.ListBox paletteBoxNew;
         private System.Windows.Forms.RadioButton zoom1x;
         private System.Windows.Forms.RadioButton zoom2x;
@@ -286,6 +377,13 @@
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.CheckBox checkIgnore;
         private System.Windows.Forms.RadioButton zoom6x;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabFiles;
+        private System.Windows.Forms.ListBox fileListBox;
+        private System.Windows.Forms.TabPage tabActions;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown textBoxResizeAll;
+        private System.Windows.Forms.Label label4;
 
     }
 }

@@ -1,0 +1,11 @@
+C:\Repository\VectorChimera\VectorChimera\bin\x64\Debug\VectorChimera.exe.config
+C:\Repository\VectorChimera\VectorChimera\bin\x64\Debug\VectorChimera.exe
+C:\Repository\VectorChimera\VectorChimera\bin\x64\Debug\VectorChimera.pdb
+C:\Repository\VectorChimera\VectorChimera\bin\x64\Debug\Magick.NET-x64.dll
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.ColorPicker.resources
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.MainForm.resources
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.Properties.Resources.resources
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.csproj.GenerateResource.Cache
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.exe
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.pdb
+C:\Repository\VectorChimera\VectorChimera\obj\x64\Debug\VectorChimera.csprojResolveAssemblyReference.cache

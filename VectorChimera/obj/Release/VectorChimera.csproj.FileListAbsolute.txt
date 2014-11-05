@@ -18,3 +18,4 @@ C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.ColorPicker.
 C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.MainForm.resources
 C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.Properties.Resources.resources
 C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.csproj.GenerateResource.Cache
+C:\Repository\VectorChimera\VectorChimera\bin\Release\Magick.NET-x64.dll

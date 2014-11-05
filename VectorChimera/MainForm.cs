@@ -99,7 +99,8 @@ namespace VectorChimera
                         MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                ColorPalette.SaveFiles(Palette, FileList);
+                ColorPalette.SaveFiles(Palette, FileList,
+                    (float)textBoxResizeAll.Value/100);
             }
             else
             {
@@ -160,12 +161,15 @@ namespace VectorChimera
 
             RefreshFileList();
 
-            fileListBox.SelectedIndex = fileListBox.Items.Count-1;
+            if (FileList.Count > 0)
+            {
+                fileListBox.SelectedIndex = fileListBox.Items.Count - 1;
 
-            RefreshImage();
-            ColorLists.RefreshPalette();
-            buttonSaveAll.Enabled = true;
-            buttonRemove.Enabled = true;
+                RefreshImage();
+                ColorLists.RefreshPalette();
+                buttonSaveAll.Enabled = true;
+                buttonRemove.Enabled = true;
+            }
         }
 
         private void LoadFile(string file)
@@ -186,9 +190,10 @@ namespace VectorChimera
             {
                 string extention = file.Substring(file.Length - 3, 3);
 
-                if (extention != "png")
+                if (extention != "png")// && extention != "gif")
                 {
                     if (!checkIgnore.Checked) MessageBox.Show("Only .png is supported for now!", "Sorray...", MessageBoxButtons.OK);
+                    //if (!checkIgnore.Checked) MessageBox.Show("Only .png and .gif is supported for now!", "Sorray...", MessageBoxButtons.OK);
                     return;
                 }
 
@@ -227,8 +232,19 @@ namespace VectorChimera
         {
             if (FileList != null && FileList.Count > 0)
             {
-                Image temp = ImageHandler.LoadImageNoLock(FileList[fileListBox.SelectedIndex]);
-                imagePreviewArea.Image = ImageHandler.ResizeBitmap(ColorPalette.SwapColors(Palette, new Bitmap(temp)), Zoom * temp.Width, Zoom * temp.Height);
+                string file = FileList[fileListBox.SelectedIndex];
+                string extention = file.Substring(file.Length - 3, 3);
+                Image temp = ImageHandler.LoadImageNoLock(file);
+
+                /*if (extention == "gif")
+                {
+                    //imagePreviewArea.Image = ImageHandler.LoadImageNoLock(file);
+                    imagePreviewArea.Image = ImageHandler.ResizeGif(file, Zoom * temp.Width, Zoom * temp.Height);
+                }
+                else*/
+                {
+                    imagePreviewArea.Image = ImageHandler.ResizeBitmap(ColorPalette.SwapColors(Palette, new Bitmap(temp)), Zoom * temp.Width, Zoom * temp.Height);
+                }
             }
             else
             {
@@ -253,5 +269,19 @@ namespace VectorChimera
             return new ColorResult() { Color = dialog.SelectedColor, Result = colorResult };
         }
 
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

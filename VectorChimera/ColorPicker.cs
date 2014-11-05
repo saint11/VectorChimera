@@ -37,8 +37,23 @@ namespace VectorChimera
             textBoxH.TextChanged += textBox_TextChanged;
             textBoxS.TextChanged += textBox_TextChanged;
             textBoxV.TextChanged += textBox_TextChanged;
+
+            textBoxHexa.TextChanged += textBox_HexaTextChanged;
         }
 
+        private void textBox_HexaTextChanged(object sender, EventArgs e)
+        {
+            if (textBoxHexa.Text.Count() == 6)
+            {
+                int red = ParseHexa(textBoxHexa.Text.Substring(0, 2), trackBarRed.Minimum, trackBarRed.Maximum);
+                int green = ParseHexa(textBoxHexa.Text.Substring(2, 2), trackBarGreen.Minimum, trackBarGreen.Maximum);
+                int blue = ParseHexa(textBoxHexa.Text.Substring(4, 2), trackBarBlue.Minimum, trackBarBlue.Maximum);
+
+                SetColor(Color.FromArgb(red, green, blue),false,"hex");
+            }
+        }
+
+        
         void textBox_TextChanged(object sender, EventArgs e)
         {
             UpdateSlidersFromText();
@@ -63,6 +78,21 @@ namespace VectorChimera
 
             trackBarValue.Value = ParseClamp(textBoxV.Text, trackBarValue.Minimum, trackBarValue.Maximum);
             textBoxV.Text = trackBarValue.Value.ToString();
+        }
+
+        private int ParseHexa(string text, int min, int max)
+        {
+            int ret;
+            try
+            {
+                ret = int.Parse(text, System.Globalization.NumberStyles.HexNumber);
+            }
+            catch
+            {
+                ret = min;
+            }
+
+            return Util.Clamp(ret, min, max);
         }
 
         private int ParseClamp(string text,int min, int max)
@@ -129,11 +159,15 @@ namespace VectorChimera
             Close();
         }
 
-        public void SetColor(Color color, bool both = true)
+        public void SetColor(Color color, bool both = true,string origin="slider")
         {
-            if (both) OldColor = SelectedColor = color;
+            if (both)
+            {
+                OldColor = SelectedColor = color;
+                labelOldValue.Text = color.R.ToString("X") + color.G.ToString("X") + color.B.ToString("X");
+            }
             newColorBox.BackColor = oldColorBox.BackColor = OldColor;
-            
+
             trackBarRed.Value = color.R;
             trackBarGreen.Value = color.G;
             trackBarBlue.Value = color.B;
@@ -145,6 +179,8 @@ namespace VectorChimera
             if (cMax - cMin == 0) trackBarSaturation.Value = 0;
             else trackBarSaturation.Value = (int)(((cMax-cMin)/cMax )* 1000);
             trackBarValue.Value = (int)(cMax);
+
+            if (origin!="hex") textBoxHexa.Text = color.R.ToString("X") + color.G.ToString("X") + color.B.ToString("X");
 
             UpdateRGBNewColor();
         }
