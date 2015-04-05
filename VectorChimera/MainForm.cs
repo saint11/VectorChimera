@@ -63,7 +63,7 @@ namespace VectorChimera
             FileList.RemoveAt(fileListBox.SelectedIndex);
             if (fileListBox.SelectedIndex > 0) fileListBox.SelectedIndex--;
 
-            RefreshImage();
+            RefreshImage(Palette);
 
             if (FileList.Count == 0)
             {
@@ -112,22 +112,22 @@ namespace VectorChimera
         private void zoom1x_CheckedChanged(object sender, EventArgs e)
         {
             Zoom = 1;
-            RefreshImage();
+            RefreshImage(Palette);
         }
         void zoom2x_CheckedChanged(object sender, EventArgs e)
         {
             Zoom = 2;
-            RefreshImage();
+            RefreshImage(Palette);
         }
         private void zoom4x_CheckedChanged(object sender, EventArgs e)
         {
             Zoom = 4;
-            RefreshImage();
+            RefreshImage(Palette);
         }
         private void zoom6x_CheckedChanged(object sender, EventArgs e)
         {
             Zoom = 6;
-            RefreshImage();
+            RefreshImage(Palette);
         }
 
 
@@ -165,7 +165,7 @@ namespace VectorChimera
             {
                 fileListBox.SelectedIndex = fileListBox.Items.Count - 1;
 
-                RefreshImage();
+                RefreshImage(Palette);
                 ColorLists.RefreshPalette();
                 buttonSaveAll.Enabled = true;
                 buttonRemove.Enabled = true;
@@ -228,7 +228,7 @@ namespace VectorChimera
     #endregion
 
     #region Refreshes
-        private void RefreshImage()
+        private void RefreshImage(Dictionary<int,int> changelog)
         {
             if (FileList != null && FileList.Count > 0)
             {
@@ -243,7 +243,7 @@ namespace VectorChimera
                 }
                 else*/
                 {
-                    imagePreviewArea.Image = ImageHandler.ResizeBitmap(ColorPalette.SwapColors(Palette, new Bitmap(temp)), Zoom * temp.Width, Zoom * temp.Height);
+                    imagePreviewArea.Image = ImageHandler.ResizeBitmap(ColorPalette.SwapColors(changelog, new Bitmap(temp)), Zoom * temp.Width, Zoom * temp.Height);
                 }
             }
             else
@@ -257,12 +257,12 @@ namespace VectorChimera
 
         void fileListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RefreshImage();
+            RefreshImage(Palette);
         }
 
-        ColorResult showColorDialog(Color color)
+        ColorResult showColorDialog(Color color, int index)
         {
-            ColorPicker dialog = new ColorPicker();
+            ColorPicker dialog = new ColorPicker(ColorLists.ReplaceColor, index);
             dialog.SetColor(color);
             DialogResult colorResult = dialog.ShowDialog();
             

@@ -33,8 +33,13 @@ namespace VectorChimera
 
         private bool ineyedropmode;
 
-        public ColorPicker()
+        private Action<int, Color, bool> refreshImage;
+        private int selectedIndex;
+
+        public ColorPicker(Action<int, Color, bool> refreshImage, int selectedIndex)
         {
+            this.selectedIndex = selectedIndex;
+            this.refreshImage = refreshImage;
             InitializeComponent();
 
             if (timer == null)
@@ -167,6 +172,8 @@ namespace VectorChimera
             textBoxR.Text = trackBarRed.Value.ToString();
             textBoxG.Text = trackBarGreen.Value.ToString();
             textBoxB.Text = trackBarBlue.Value.ToString();
+
+            refreshImage(selectedIndex ,SelectedColor,true);
         }
 
         void UpdateHSVNewColor()
@@ -176,6 +183,8 @@ namespace VectorChimera
             textBoxH.Text = trackBarHue.Value.ToString();
             textBoxS.Text = trackBarSaturation.Value.ToString();
             textBoxV.Text = trackBarValue.Value.ToString();
+
+            refreshImage(selectedIndex, SelectedColor, true);
         }
 
         void buttonOk_Click(object sender, EventArgs e)
@@ -259,33 +268,13 @@ namespace VectorChimera
 
         private void ChangeCursor()
         {
-            RegistryKey pRegKey = Registry.CurrentUser;
-            pRegKey = pRegKey.OpenSubKey(@"Control Panel\Cursors");
-            paths.Clear();
-            foreach (var key in pRegKey.GetValueNames())
-            {
-                Object _key = pRegKey.GetValue(key);
-                //Take a backup.
-                paths.Add(key, _key.ToString());
-                Object val = Registry.GetValue(@"HKEY_CURRENT_USER\Control Panel\Cursors", key, null);
-                Registry.SetValue(@"HKEY_CURRENT_USER\Control Panel\Cursors", key, AppDomain.CurrentDomain.BaseDirectory + @"eyedropper.cur");
-            }
-
-            InteropHelper.SystemParametersInfo(InteropHelper.SPI_SETCURSORS, 0, null, InteropHelper.SPIF_UPDATEINIFILE | InteropHelper.SPIF_SENDCHANGE);
+            //Make this work
         }
 
         private void ResetCursorToDefault()
         {
             timer.Stop();
-
-            RegistryKey pRegKey = Registry.CurrentUser;
-            pRegKey = pRegKey.OpenSubKey(@"Control Panel\Cursors");
-            foreach (string key in paths.Keys)
-            {
-                string path = paths[key];
-                Registry.SetValue(@"HKEY_CURRENT_USER\Control Panel\Cursors", key, path);
-            }
-            InteropHelper.SystemParametersInfo(InteropHelper.SPI_SETCURSORS, 0, null, InteropHelper.SPIF_UPDATEINIFILE | InteropHelper.SPIF_SENDCHANGE);
+            //Make this work
         }
     }
 }

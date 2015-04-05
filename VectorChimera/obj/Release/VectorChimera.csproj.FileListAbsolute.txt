@@ -19,3 +19,4 @@ C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.MainForm.res
 C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.Properties.Resources.resources
 C:\Repository\VectorChimera\VectorChimera\obj\Release\VectorChimera.csproj.GenerateResource.Cache
 C:\Repository\VectorChimera\VectorChimera\bin\Release\Magick.NET-x64.dll
+C:\Repository\VectorChimera\VectorChimera\bin\Release\eyedropper.png

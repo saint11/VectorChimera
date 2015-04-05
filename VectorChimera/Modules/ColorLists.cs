@@ -14,8 +14,8 @@ namespace VectorChimera
         private ListBox paletteBoxNew;
         private MainForm Main;
 
-        public Action RefreshImage;
-        public Func<Color,ColorResult> ShowColorDialog;
+        public Action<Dictionary<int,int>> RefreshImage;
+        public Func<Color,int,ColorResult> ShowColorDialog;
 
         public ColorLists(System.Windows.Forms.ListBox paletteBoxOld, System.Windows.Forms.ListBox paletteBoxNew, MainForm main)
         {
@@ -89,13 +89,31 @@ namespace VectorChimera
         private void ChooseColor(Color from, int index)
         {
             if (ShowColorDialog == null) return;
-            ColorResult colorResult = ShowColorDialog(from);
+            ColorResult colorResult = ShowColorDialog(from, index);
 
             if (colorResult.Result == DialogResult.OK)
             {
-                Main.Palette[index] = colorResult.Color.ToArgb();
-                RefreshImage();
+                ReplaceColor(index, colorResult.Color,false);
+            }
+            else
+            {
+                ReplaceColor(index, from, false);
+            }
+        }
+
+        public void ReplaceColor(int index, Color colorResult, bool preview)
+        {
+            if (preview)
+            {
+                Dictionary<int, int> previewChangelog = new Dictionary<int, int>(Main.Palette);
+                previewChangelog[index] = colorResult.ToArgb();
+                RefreshImage(previewChangelog);
+            }
+            else
+            {
+                Main.Palette[index] = colorResult.ToArgb();
                 RefreshPalette();
+                RefreshImage(Main.Palette);
             }
         }
 

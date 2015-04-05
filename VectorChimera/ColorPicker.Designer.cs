@@ -77,7 +77,7 @@
             this.buttonOk.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(61, 26);
-            this.buttonOk.TabIndex = 2;
+            this.buttonOk.TabIndex = 10;
             this.buttonOk.Text = "ok!";
             this.buttonOk.UseVisualStyleBackColor = true;
             // 
@@ -88,7 +88,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(61, 26);
-            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "nah...";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
@@ -98,7 +98,7 @@
             this.buttonReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(61, 26);
-            this.buttonReset.TabIndex = 2;
+            this.buttonReset.TabIndex = 8;
             this.buttonReset.Text = "reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             // 
@@ -113,7 +113,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(344, 162);
-            this.tabControl1.TabIndex = 3;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -138,7 +138,7 @@
             this.textBoxB.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxB.Name = "textBoxB";
             this.textBoxB.Size = new System.Drawing.Size(39, 20);
-            this.textBoxB.TabIndex = 4;
+            this.textBoxB.TabIndex = 6;
             // 
             // textBoxG
             // 
@@ -146,7 +146,7 @@
             this.textBoxG.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxG.Name = "textBoxG";
             this.textBoxG.Size = new System.Drawing.Size(39, 20);
-            this.textBoxG.TabIndex = 4;
+            this.textBoxG.TabIndex = 5;
             // 
             // textBoxR
             // 
@@ -165,7 +165,7 @@
             this.trackBarBlue.Name = "trackBarBlue";
             this.trackBarBlue.Size = new System.Drawing.Size(286, 45);
             this.trackBarBlue.SmallChange = 5;
-            this.trackBarBlue.TabIndex = 1;
+            this.trackBarBlue.TabIndex = 3;
             this.trackBarBlue.TickFrequency = 32;
             this.trackBarBlue.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarBlue.Value = 1;
@@ -193,7 +193,7 @@
             this.trackBarRed.Name = "trackBarRed";
             this.trackBarRed.Size = new System.Drawing.Size(286, 45);
             this.trackBarRed.SmallChange = 5;
-            this.trackBarRed.TabIndex = 3;
+            this.trackBarRed.TabIndex = 1;
             this.trackBarRed.TickFrequency = 32;
             this.trackBarRed.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarRed.Value = 1;
@@ -221,7 +221,7 @@
             this.textBoxV.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxV.Name = "textBoxV";
             this.textBoxV.Size = new System.Drawing.Size(39, 20);
-            this.textBoxV.TabIndex = 7;
+            this.textBoxV.TabIndex = 6;
             // 
             // textBoxS
             // 
@@ -229,7 +229,7 @@
             this.textBoxS.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxS.Name = "textBoxS";
             this.textBoxS.Size = new System.Drawing.Size(39, 20);
-            this.textBoxS.TabIndex = 7;
+            this.textBoxS.TabIndex = 5;
             // 
             // textBoxH
             // 
@@ -237,7 +237,7 @@
             this.textBoxH.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxH.Name = "textBoxH";
             this.textBoxH.Size = new System.Drawing.Size(39, 20);
-            this.textBoxH.TabIndex = 7;
+            this.textBoxH.TabIndex = 4;
             // 
             // trackBarValue
             // 
@@ -248,7 +248,7 @@
             this.trackBarValue.Name = "trackBarValue";
             this.trackBarValue.Size = new System.Drawing.Size(286, 45);
             this.trackBarValue.SmallChange = 5;
-            this.trackBarValue.TabIndex = 4;
+            this.trackBarValue.TabIndex = 3;
             this.trackBarValue.TickFrequency = 32;
             this.trackBarValue.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarValue.Value = 1;
@@ -262,7 +262,7 @@
             this.trackBarSaturation.Name = "trackBarSaturation";
             this.trackBarSaturation.Size = new System.Drawing.Size(286, 45);
             this.trackBarSaturation.SmallChange = 5;
-            this.trackBarSaturation.TabIndex = 5;
+            this.trackBarSaturation.TabIndex = 2;
             this.trackBarSaturation.TickFrequency = 32;
             this.trackBarSaturation.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarSaturation.Value = 1;
@@ -276,7 +276,7 @@
             this.trackBarHue.Name = "trackBarHue";
             this.trackBarHue.Size = new System.Drawing.Size(286, 45);
             this.trackBarHue.SmallChange = 5;
-            this.trackBarHue.TabIndex = 6;
+            this.trackBarHue.TabIndex = 1;
             this.trackBarHue.TickFrequency = 32;
             this.trackBarHue.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarHue.Value = 1;
@@ -377,7 +377,7 @@
             this.buttonWinColor.Margin = new System.Windows.Forms.Padding(2);
             this.buttonWinColor.Name = "buttonWinColor";
             this.buttonWinColor.Size = new System.Drawing.Size(84, 26);
-            this.buttonWinColor.TabIndex = 2;
+            this.buttonWinColor.TabIndex = 9;
             this.buttonWinColor.Text = "windows picker";
             this.buttonWinColor.UseVisualStyleBackColor = true;
             // 
