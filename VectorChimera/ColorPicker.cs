@@ -1,12 +1,18 @@
-﻿using System;
+﻿using EyeDropper;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace VectorChimera
 {
@@ -15,10 +21,29 @@ namespace VectorChimera
         public Color OldColor = Color.Black;
         public Color SelectedColor = Color.Black;
 
+        private BitmapSource screenimage;
+
+        private byte[] pixels;
+
+        private DispatcherTimer timer;
+
+        private System.Windows.Point previousposition;
+
+        private Color backBrush;
+
+        private bool ineyedropmode;
+
         public ColorPicker()
         {
             InitializeComponent();
-            
+
+            if (timer == null)
+            {
+                timer = new DispatcherTimer();
+                timer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+                timer.Tick += new EventHandler(timer_Tick);
+            }
+
             buttonOk.Click += buttonOk_Click;
             buttonReset.Click += buttonReset_Click;
             buttonWinColor.Click += buttonWinColor_Click;
@@ -183,6 +208,84 @@ namespace VectorChimera
             if (origin!="hex") textBoxHexa.Text = color.R.ToString("X") + color.G.ToString("X") + color.B.ToString("X");
 
             UpdateRGBNewColor();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            System.Drawing.Point _point = System.Windows.Forms.Control.MousePosition;
+            System.Windows.Point point = new System.Windows.Point(_point.X, _point.Y);
+            if (previousposition == null || previousposition != point)
+            {
+                if (screenimage != null)
+                {
+                    int stride = (screenimage.PixelWidth * screenimage.Format.BitsPerPixel + 7) / 8;
+                    pixels = new byte[screenimage.PixelHeight * stride];
+                    Int32Rect rect = new Int32Rect((int)point.X, (int)point.Y, 1, 1);
+                    screenimage.CopyPixels(rect, pixels, stride, 0);
+                    rectcolor.BackColor = Color.FromArgb(255,pixels[2], pixels[1], pixels[0]);
+                    txt.Text = InteropHelper.ConvertToString(rectcolor.BackColor);
+                    SetColor(Color.FromArgb(255, pixels[2], pixels[1], pixels[0]),false,"picker");
+                }
+            }
+            if (System.Windows.Forms.Control.MouseButtons != System.Windows.Forms.MouseButtons.Left)
+            {
+                timer.Stop();
+                ResetCursorToDefault();
+            }
+            previousposition = point;
+        }
+
+        private Dictionary<string, string> paths = new Dictionary<string, string>();
+
+        private void rectcolor_MouseDown(object sender, EventArgs e)
+        {
+            screenimage = InteropHelper.CaptureRegion(InteropHelper.GetDesktopWindow(),
+                                                                       (int)SystemParameters.VirtualScreenLeft,
+                                                                       (int)SystemParameters.VirtualScreenTop,
+                                                                       (int)SystemParameters.PrimaryScreenWidth,
+                                                                       (int)SystemParameters.PrimaryScreenHeight);
+            backBrush = rectcolor.BackColor;
+            if (paths.Count() > 0)
+            {
+                ResetCursorToDefault();
+            }
+            else
+            {
+                timer.Start();
+                ineyedropmode = true;
+                ChangeCursor();
+            }
+        }
+
+        private void ChangeCursor()
+        {
+            RegistryKey pRegKey = Registry.CurrentUser;
+            pRegKey = pRegKey.OpenSubKey(@"Control Panel\Cursors");
+            paths.Clear();
+            foreach (var key in pRegKey.GetValueNames())
+            {
+                Object _key = pRegKey.GetValue(key);
+                //Take a backup.
+                paths.Add(key, _key.ToString());
+                Object val = Registry.GetValue(@"HKEY_CURRENT_USER\Control Panel\Cursors", key, null);
+                Registry.SetValue(@"HKEY_CURRENT_USER\Control Panel\Cursors", key, AppDomain.CurrentDomain.BaseDirectory + @"eyedropper.cur");
+            }
+
+            InteropHelper.SystemParametersInfo(InteropHelper.SPI_SETCURSORS, 0, null, InteropHelper.SPIF_UPDATEINIFILE | InteropHelper.SPIF_SENDCHANGE);
+        }
+
+        private void ResetCursorToDefault()
+        {
+            timer.Stop();
+
+            RegistryKey pRegKey = Registry.CurrentUser;
+            pRegKey = pRegKey.OpenSubKey(@"Control Panel\Cursors");
+            foreach (string key in paths.Keys)
+            {
+                string path = paths[key];
+                Registry.SetValue(@"HKEY_CURRENT_USER\Control Panel\Cursors", key, path);
+            }
+            InteropHelper.SystemParametersInfo(InteropHelper.SPI_SETCURSORS, 0, null, InteropHelper.SPIF_UPDATEINIFILE | InteropHelper.SPIF_SENDCHANGE);
         }
     }
 }

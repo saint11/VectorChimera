@@ -29,3 +29,4 @@ C:\Repository\VectorChimera\VectorChimera\obj\Debug\VectorChimera.MainForm.resou
 C:\Repository\VectorChimera\VectorChimera\obj\Debug\VectorChimera.Properties.Resources.resources
 C:\Repository\VectorChimera\VectorChimera\obj\Debug\VectorChimera.csproj.GenerateResource.Cache
 C:\Repository\VectorChimera\VectorChimera\bin\Debug\Magick.NET-x64.dll
+C:\Repository\VectorChimera\VectorChimera\bin\Debug\eyedropper.png
