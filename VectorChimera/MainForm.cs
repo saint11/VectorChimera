@@ -31,10 +31,7 @@ namespace VectorChimera
 
             fileListBox.SelectedIndexChanged += fileListBox_SelectedIndexChanged;
 
-            zoom1x.CheckedChanged += zoom1x_CheckedChanged;
-            zoom2x.CheckedChanged += zoom2x_CheckedChanged;
-            zoom4x.CheckedChanged += zoom4x_CheckedChanged;
-            zoom6x.CheckedChanged += zoom6x_CheckedChanged;
+            trackBar1.ValueChanged += trackBar1_ValueChanged;
 
             buttonSaveAll.Click += buttonSaveAll_Click;
 
@@ -109,6 +106,7 @@ namespace VectorChimera
             
         }
 
+        /*
         private void zoom1x_CheckedChanged(object sender, EventArgs e)
         {
             Zoom = 1;
@@ -128,7 +126,7 @@ namespace VectorChimera
         {
             Zoom = 6;
             RefreshImage(Palette);
-        }
+        }*/
 
 
 #endregion
@@ -282,6 +280,13 @@ namespace VectorChimera
             {
                 e.Handled = true;
             }
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            Zoom = trackBar1.Value;
+            label5.Text = "Zoom: " + trackBar1.Value + "x";
+            RefreshImage(Palette);
         }
     }
 }
