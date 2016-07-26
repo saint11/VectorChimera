@@ -43,3 +43,14 @@ C:\Users\User\Desktop\Vector\VectorChimera\VectorChimera\bin\Debug\Magick.NET-Q8
 C:\Users\User\Desktop\Vector\VectorChimera\VectorChimera\bin\Debug\Magick.NET-Q8-x64.xml
 C:\Users\User\Desktop\Vector\VectorChimera\VectorChimera\obj\Debug\VectorChimera.exe
 C:\Users\User\Desktop\Vector\VectorChimera\VectorChimera\obj\Debug\VectorChimera.pdb
+C:\dev\VectorChimeraOld\VectorChimera\bin\Debug\VectorChimera.exe.config
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.exe
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.pdb
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.csprojResolveAssemblyReference.cache
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.ColorPicker.resources
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.MainForm.resources
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.Properties.Resources.resources
+C:\dev\VectorChimeraOld\VectorChimera\obj\Debug\VectorChimera.csproj.GenerateResource.Cache
+C:\dev\VectorChimeraOld\VectorChimera\bin\Debug\eyedropper.png
+C:\dev\VectorChimeraOld\VectorChimera\bin\Debug\VectorChimera.exe
+C:\dev\VectorChimeraOld\VectorChimera\bin\Debug\VectorChimera.pdb

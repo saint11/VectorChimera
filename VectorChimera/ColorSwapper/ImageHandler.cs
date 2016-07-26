@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using ImageMagick;
+//using ImageMagick;
 
 namespace VectorChimera
 {
@@ -42,7 +42,7 @@ namespace VectorChimera
 
             return ret;
         }
-
+        /*
         internal static Image ResizeGif(string path, int nWidth, int nHeight)
         {
 
@@ -52,7 +52,7 @@ namespace VectorChimera
             //->coalesceImages(); 
             
             
-            /*
+            
             foreach ($image as $frame) { 
               $frame->cropImage($crop_w, $crop_h, $crop_x, $crop_y); 
               $frame->thumbnailImage($size_w, $size_h); 
@@ -60,14 +60,14 @@ namespace VectorChimera
             } 
 
             $image = $image->deconstructImages(); 
-            $image->writeImages($file_dst, true); */
+            $image->writeImages($file_dst, true); 
 
 
-            var ms = new MemoryStream(image.ToByteArray(MagickFormat.Gif)); // Don't use using!!
+        var ms = new MemoryStream(image.ToByteArray(MagickFormat.Gif)); // Don't use using!!
             //var ms = new MemoryStream(File.ReadAllBytes(path)); // Don't use using!!
             Image ret = Image.FromStream(ms);
             
             return ret;
-        }
+        }*/
     }
 }
